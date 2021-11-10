@@ -15,7 +15,7 @@
  
 */
 
-
+const date = document.getElementById('date number');
 const userInput= Number(prompt('Bienvenido Ingrese el valor del juego'));
 
 function taxes (precio) {
