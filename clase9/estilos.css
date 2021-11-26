@@ -1,0 +1,126 @@
+:root{
+    --primary: #aa7f4f ;
+    --color-3: rgb(49, 153, 163);
+    --secondary: rgb(14, 179, 255);
+    --light: white ;
+    --dark: rgb(37, 36, 36);
+    --disable: rgba(226, 226, 226, 0.801);
+}
+
+*:first-letter{
+    text-transform: capitalize;
+}
+
+body {
+ margin: 0;
+ height: 100vh;
+ background-color: var(--disable);
+
+
+}
+
+.list {
+    margin: 25px auto;
+    padding: 25px;
+    background-color: var(--light);
+    width: 100%;
+    max-width: 350px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px rgb(100, 100, 100);
+    height: 100%;
+}
+
+
+form{
+    margin: 20px 0;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: auto 35px auto;
+    grid-column-gap: 15px;
+}
+
+input{
+    border:none;
+    padding-left: 10px;
+    background-color: var(--disable);
+    border-radius: 5px;
+}
+
+input:focus{
+    outline: none;
+}
+
+.addTaskButton,
+.orderButton{
+
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+}
+
+.addTaskButton{
+    height: 35px;
+    font-size: 12px;
+    background-color: #C3A98B;
+    width: 60px;
+    
+    
+}
+
+
+.addTaskButton:hover,
+.orderButton:hover{
+
+    background-color: var(--primary);
+    color: var(--light) ;
+    transition: 500ms;
+
+}
+
+
+
+.orderButton{
+    background-color: var(--secondary);
+    color: var(--light);
+    margin-left: auto;
+}
+
+.task{
+    background-color: var(--color-3);
+    padding: 15px;
+    margin-top: 15px;
+    color: var(--light);
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+
+.done{
+
+    background-color: var(--disable);
+    text-decoration: line-through;
+    color: var(--dark);
+  
+}
+
+
+header{
+    background-image: url(/proyectoFinal/banner2.jpg);
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 40px;
+}
+
+.titulo{
+    width: 100%;
+    background-color: #C3A98B;
+    text-align: center;
+    line-height: 300px;
+    color: white;
+    font-size: 20px;
+}
