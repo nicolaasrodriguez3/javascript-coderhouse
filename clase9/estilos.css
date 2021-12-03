@@ -63,12 +63,11 @@ input:focus{
 .addTaskButton{
     height: 35px;
     font-size: 12px;
-    background-color: #C3A98B;
-    width: 60px;
+    background-color: #8bc394;
+    width: 35px;
     
     
 }
-
 
 .addTaskButton:hover,
 .orderButton:hover{
@@ -103,6 +102,7 @@ input:focus{
     background-color: var(--disable);
     text-decoration: line-through;
     color: var(--dark);
+    
   
 }
 

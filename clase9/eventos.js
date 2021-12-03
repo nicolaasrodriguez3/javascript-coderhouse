@@ -4,6 +4,9 @@
 const taskContainer = document.getElementById('taskContainer');
 const formulario = document.getElementById('formulario')
 
+let listaDeTareas = [];
+
+
 formulario.onsubmit = (event) =>{
     event.preventDefault();
     const { value } = event.target.taskText;
@@ -14,6 +17,10 @@ formulario.onsubmit = (event) =>{
     task.textContent = value;
     taskContainer.prepend(task);
     event.target.reset();
+    listaDeTareas.push(task.textContent);
+    localStorage.setItem( "tareas", JSON.stringify(listaDeTareas));
+    
+
 }
 
 
@@ -41,3 +48,7 @@ const order = () =>{
 const renderOrderedTasks = () => {
     order().forEach(el => taskContainer.appendChild(el))
 };
+
+
+
+
