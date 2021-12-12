@@ -1,24 +1,39 @@
 
+/* Traemos los elementos del DOM  */
+
 const botonAgregar = document.getElementById('boton-agregar')
 const botonLimpiar = document.getElementById('btn-limpiar')
 const listaTareas = document.querySelector('.lista-tareas')
 
 
-botonAgregar.addEventListener('click', () => {
-    //funcion para agregar tareas
-    agregarTarea("");
+/* Eventos  */
 
-})
-
-botonLimpiar.addEventListener('click', () => {
-    //funcion para eliminar todas las tareas
-
+$("#btn-limpiar").click(()=>{
     limpiarTodo();
+});
+
+
+$("#boton-agregar").click(()=>{
+    agregarTarea("");
+});
+
+$("#botonDone").click(()=>{
+    listaTareas.classList.toggle('input-done');
 })
 
+/* $(".lista-tareas").click((event)=>{
+
+    if (event.path[0].type == 'submit') {
+        eliminarTarea(event.path[1].id);
+    };
+
+        ESTE EVENTO ME TIRA ERROR SI LO HAGO CON JQUERY 
 
 
-listaTareas.addEventListener('click', (event) => {
+
+}) */
+
+ listaTareas.addEventListener('click', (event) => {
     //funcion para eliminar la tarea seleccionada
 
     if (event.path[0].type == 'submit') {
@@ -26,6 +41,27 @@ listaTareas.addEventListener('click', (event) => {
     }
 
 })
+ 
+
+/* $(".lista-tareas").click((event)=>{
+    if (event.path[0].type == 'submit') {
+        eliminarTarea(event.path[1].id);
+    };
+});
+
+
+    ME TIRA ERROR SI LO HAGO COMO EVENTO DE JQUERY:
+
+    app.js:45 Uncaught TypeError: Cannot read properties of undefined (reading '0')
+    at HTMLUListElement.<anonymous> (app.js:45)
+    at HTMLUListElement.dispatch (libreria.min.js:1)
+    at HTMLUListElement.v.handle (libreria.min.js:1)
+    (anonymous) @ app.js:45
+   Dispatch @ libreria.min.js:1
+    v.handle @ libreria.min.js:1
+
+ */
+
 
 
 listaTareas.addEventListener('keypress', (event) => {
@@ -33,8 +69,10 @@ listaTareas.addEventListener('keypress', (event) => {
     
     if (event.keyCode == 13) {
         editarTarea(event.path[1].id, event.path[0].value);
-    
+        agregarTarea("");
     }
+
+    
 })
 
 /* LocaStorage */
@@ -42,6 +80,8 @@ listaTareas.addEventListener('keypress', (event) => {
 let arregloTareas = [];
 let contador = 0;
 
+
+/* Funciones  */
 
 const getContador = () => {
     const cont = localStorage.getItem("contador")
@@ -103,9 +143,11 @@ const listarTareas = () =>{
     if (datos != null) {
         for (const tarea of datos) {
             listaTareas.innerHTML += `
-            <li id=${tarea.id}>
+            <li id= ${tarea.id}>
                 <input type="text" class="input-tarea"  value= "${tarea.descripcion}">
-                <button class="boton-eliminar">X</button>
+                <button class="btn-done" id="botonDone" >Done</button> <button class="boton-eliminar">X</button> 
+               
+                
             </li>
             
             `
@@ -171,12 +213,13 @@ const limpiarTodo = ( )=>{
     setContador();
 }
 
+
+
 //inicia 
 
 inicilizarContador();
 listarTareas();
 
 
-// te quedaste en el minuto 37:10 https://www.youtube.com/watch?v=xffjlX9Sjrc
 
 
