@@ -8,8 +8,27 @@ const listaTareas = document.querySelector('.lista-tareas')
 
 /* Eventos  */
 
+
+
+/* Animaciones  */
+
+$("document").ready(()=>{
+    $("#btn-start").click(()=>{
+        $("#contenedor").fadeOut(500, () => {
+            $("#display-saludo").text("Adios ! Vuelve Pronto");
+            $("#display-saludo").addClass("log-out");
+            $("#btn-start").hide(500);
+        });
+    });
+})
+
+
+
+
 $("#btn-limpiar").click(()=>{
-    limpiarTodo();
+    
+    $(".lista").hide(500);
+   
 });
 
 
@@ -18,7 +37,7 @@ $("#boton-agregar").click(()=>{
 });
 
 $("#botonDone").click(()=>{
-    listaTareas.classList.toggle('input-done');
+    listaTareas.classList.toggle('input-done'); 
 })
 
 /* $(".lista-tareas").click((event)=>{
@@ -143,9 +162,10 @@ const listarTareas = () =>{
     if (datos != null) {
         for (const tarea of datos) {
             listaTareas.innerHTML += `
-            <li id= ${tarea.id}>
+            <li class="lista" id= ${tarea.id}>
                 <input type="text" class="input-tarea"  value= "${tarea.descripcion}">
-                <button class="btn-done" id="botonDone" >Done</button> <button class="boton-eliminar">X</button> 
+                <button class="btn-done" id="botonDone">Done</button> 
+                <button class="boton-eliminar">X</button> 
                
                 
             </li>

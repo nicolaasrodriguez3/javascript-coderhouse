@@ -4,9 +4,10 @@
 
 body{
  background-color: rgb(37, 37, 73);
- background-image: url(/clase10-2daPreentrega/imagen-fondo.jpg);
-
- background-size: cover;
+ background-image: url(../clase10-2daPreentrega/imagen-fondo.jpg);
+ background-repeat: no-repeat;
+ min-height: 10vh;
+ 
 
 }
 
@@ -19,6 +20,7 @@ body{
     background-image: url(./hoja-fondo.jpg);
     background-size: cover;
     box-shadow: 5px 5px 10px rgb(66, 66, 66);
+   
 }
 
 .header{
@@ -165,3 +167,41 @@ body{
     margin: auto;
 }
 
+#display-saludo{
+
+    margin-top: 500px;
+    
+    margin: auto;
+    color: white;
+    font-size: 40px;
+    font-family: 'Fuzzy Bubbles', cursive;
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    height: max-content;
+
+}
+
+
+.log-out{
+    background-color: rgba(0, 0, 0, 0.445);
+    padding: 50px;
+    border-radius: 5px;
+}
+
+#btn-start{
+    background-color: #f13608; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 40px;
+    margin-top: 40px;
+    cursor:pointer;
+    border: solid white;
+}
