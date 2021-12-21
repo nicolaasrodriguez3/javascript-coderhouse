@@ -235,6 +235,33 @@ const limpiarTodo = ( )=>{
 
 
 
+
+const URLApi = 'https://www.dolarsi.com/api/api.php?type=valoresprincipales';
+
+$.get( URLApi, (response, status)=>{
+
+    let contador = 0;
+
+    if (status=== "success") {
+      $("#api-btn").click( (event)=>{
+        $(".APIContainer").append(
+            `<div class="dollar-container">
+                <tr class="contador">${contador+1}</tr>
+                ${response[contador].casa.nombre} <br>
+                Compra :${response[contador].casa.compra} ARS <br>
+                Venta: ${response[contador].casa.venta} ARS
+               
+            </div>`
+        );
+
+        contador++;
+      });
+
+    };
+}
+);
+
+
 //inicia 
 
 inicilizarContador();

@@ -6,7 +6,7 @@ body{
  background-color: rgb(37, 37, 73);
  background-image: url(../clase10-2daPreentrega/imagen-fondo.jpg);
  background-repeat: no-repeat;
- min-height: 10vh;
+ background-size: cover;
  
 
 }
@@ -189,6 +189,7 @@ body{
     background-color: rgba(0, 0, 0, 0.445);
     padding: 50px;
     border-radius: 5px;
+    background-image: url();
 }
 
 #btn-start{
@@ -204,4 +205,42 @@ body{
     margin-top: 40px;
     cursor:pointer;
     border: solid white;
+}
+
+.APIContainer{
+    background-color: white;
+    
+    max-width: 400px;
+    padding: 20px;
+    margin: auto;
+    margin-top: 40px;
+    box-shadow: 5px 5px 10px rgb(66, 66, 66);
+    background-image: url(./dollar-wallpaper.jpg);
+    background-size: cover;
+    border: solid white 3px;
+}
+
+.contador{
+    display: none;
+}
+
+.dollar-container{
+  text-align: center;
+  margin-top: 10px;
+  border-top: solid black 3px;
+  background-color: #F9E79F ;
+}
+
+#api-btn{
+    background-color: #08f169;
+    border: none;
+    color: rgb(19, 9, 9);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 3px;
+    cursor:pointer;
+    border: solid rgb(55, 128, 103);
 }
