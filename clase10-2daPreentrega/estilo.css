@@ -1,5 +1,6 @@
 *{
     margin: 0;
+    box-sizing: border-box;
 }
 
 body{
@@ -192,20 +193,6 @@ body{
     background-image: url();
 }
 
-#btn-start{
-    background-color: #f13608; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-left: 40px;
-    margin-top: 40px;
-    cursor:pointer;
-    border: solid white;
-}
 
 .APIContainer{
     background-color: white;
@@ -243,4 +230,102 @@ body{
     margin-top: 3px;
     cursor:pointer;
     border: solid rgb(55, 128, 103);
+
+}
+
+.menuContainer{
+    margin: 0;
+    display: flex;
+    position: relative;
+}
+
+.sideBar{
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background-color: white;
+    padding: 30px 0;
+}
+
+.sideBar h2{
+    text-align:center;
+    margin-bottom: 30px;
+    
+}
+
+.sideBar ul{
+    
+    list-style: none;
+    width: 100%;
+}
+
+.sideBar ul li{
+    padding: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(225, 225, 225, 0.05);
+    
+    width: 100%;
+
+}
+
+.sideBar ul li:hover{
+   background-color: rgb(9, 56, 58);
+}
+
+
+.sideBar ul li a{
+    color: rgb(0, 0, 0);
+    display: block;
+    text-decoration: none;
+    margin-left: 0px;
+}
+
+
+
+.fas{
+    width: 25px;
+}
+
+.redesSociales{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.redesSociales a{
+    display: block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: black;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    
+}
+
+.redesSociales a .fab{
+    height: 40px;
+    width: 40px;
+    font-size: 20px;
+    margin: 5px;
+}
+.menu{
+    text-decoration: none;
+    list-style: none;
+    
+}
+
+.mainContent{
+    width: 100%;
+    margin-left: 200px;
+}
+#menuNavegacion{
+    list-style: none;
+    text-align: left;
+    text-decoration: none;
+    margin: 0px !important;
+    padding: 0px;
 }

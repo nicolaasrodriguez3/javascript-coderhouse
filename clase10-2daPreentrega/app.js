@@ -1,6 +1,7 @@
 
 /* Traemos los elementos del DOM  */
 
+
 const botonAgregar = document.getElementById('boton-agregar')
 const botonLimpiar = document.getElementById('btn-limpiar')
 const listaTareas = document.querySelector('.lista-tareas')
@@ -161,16 +162,18 @@ const listarTareas = () =>{
 
     if (datos != null) {
         for (const tarea of datos) {
-            listaTareas.innerHTML += `
-            <li class="lista" id= ${tarea.id}>
-                <input type="text" class="input-tarea"  value= "${tarea.descripcion}">
-                <button class="btn-done" id="botonDone">Done</button> 
-                <button class="boton-eliminar">X</button> 
+           
+           $(".lista-tareas").append(`
+           <li class="lista" id= ${tarea.id}>
+               <input type="text" class="input-tarea"  value= "${tarea.descripcion}">
+               <button class="btn-done" id="botonDone">Done</button> 
+               <button class="boton-eliminar">X</button> 
+              
                
-                
-            </li>
-            
-            `
+           </li>
+           
+           ` )
+           
         };
     };
 
@@ -236,37 +239,87 @@ const limpiarTodo = ( )=>{
 
 
 
+
+
+
+const router = (route) =>{
+    
+    
+    switch(route){
+        case '#/':
+            return 
+        case '#/finanzas':
+            $.get( URLApi, (response, status)=>{
+
+                let contador = 0;
+            
+                if (status=== "success") {
+                  $("#api-btn").on("click", (event)=>{
+                    $(".APIContainer").append(
+                        `<div class="dollar-container">
+                            <tr class="contador">${contador+1}</tr>
+                            ${response[contador].casa.nombre} <br>
+                            Compra :${response[contador].casa.compra} ARS <br>
+                            Venta: ${response[contador].casa.venta} ARS
+                           
+                        </div>`
+                    );
+            
+                    contador++;
+                  });
+            
+                };
+            }
+            );
+            
+            return $('.mainContent').html( contenidoFinanzas())
+       
+        case'#/to-do-list':
+            
+                    
+            return $('.mainContent').html( contenidoToDoList())
+    }
+
+};
+
+window.addEventListener('hashchange', () =>{
+    router(window.location.hash)
+});
+
+
+
+const contenidoToDoList = ()=>{
+    const view = `<div class="container" id="contenedor">
+    <div class="header">
+      <h1 class="titulo">My To Do List</h1>
+    </div>
+    <button id="boton-agregar" class="boton-agregar">+ Add new task</button>
+    <ul class="lista-tareas">
+
+    </ul>
+    <button class="boton-limpiar" id="btn-limpiar">Clear all</button>
+  </div>`
+
+
+  return view
+};
+
+const contenidoFinanzas = ()=>{
+  const view = `<div class="APIContainer"><button id="api-btn">Consultar cotizacion Dolar</button></div>` ;
+  return view
+};
+
 const URLApi = 'https://www.dolarsi.com/api/api.php?type=valoresprincipales';
 
-$.get( URLApi, (response, status)=>{
 
-    let contador = 0;
 
-    if (status=== "success") {
-      $("#api-btn").click( (event)=>{
-        $(".APIContainer").append(
-            `<div class="dollar-container">
-                <tr class="contador">${contador+1}</tr>
-                ${response[contador].casa.nombre} <br>
-                Compra :${response[contador].casa.compra} ARS <br>
-                Venta: ${response[contador].casa.venta} ARS
-               
-            </div>`
-        );
 
-        contador++;
-      });
 
-    };
-}
-);
 
 
 //inicia 
 
 inicilizarContador();
 listarTareas();
-
-
 
 

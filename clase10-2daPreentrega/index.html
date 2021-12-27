@@ -1,65 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
     <!-- Libreria JQUERY -->
     <script src="./libreria.min.js"></script>
 
     <!-- Link de hoja de estilos -->
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="estilo.css" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&family=Roboto:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Link de hoja de estilos -->
+  </head>
+  <body>
+    <div class="menuContainer">
+      <nav class="sideBar">
+        <h2>Mi App</h2>
 
+        <ul class="menu" id="menuNavegacion">
+          <li>
+            <a href="#/"><i class="fas fa-home"> </i>Home</a>
+          </li>
+          <li>
+            <a href="#/to-do-list"><i class="fas fa-tasks"></i>To-do List</a>
+          </li>
+          <li>
+            <a href="#/finanzas"><i class="fas fa-piggy-bank"></i>Finanzas</a>
+          </li>
+          <li>
+            <a href="#/log-out" id="btn-start"
+              ><i class="fas fa-sign-out-alt"></i>Salir</a
+            >
+          </li>
+        </ul>
 
+        <div class="redesSociales">
+          <a href=""><i class="fab fa-github"></i></a>
+          <a href=""><i class="fab fa-instagram"></i></a>
+          <a href=""><i class="fab fa-linkedin"></i></a>
+        </div>
+      </nav>
 
+      <div class="mainContent" id="main">
+        <h2 id="display-saludo"></h2>
+        <div class="container" id="contenedor">
+          <div class="header">
+            <h1 class="titulo">My To Do List</h1>
+          </div>
+          <button id="boton-agregar" class="boton-agregar">
+            + Add new task
+          </button>
+          <ul class="lista-tareas"></ul>
+          <button class="boton-limpiar" id="btn-limpiar">Clear all</button>
+        </div>
 
-
-</head>
-<body>
-
-    <div>
-      <button id="btn-start">Press to Log Out</button>
-    </div>
-
-    <h1 id="display-saludo">
-     
-    </h1>
-    <div class="container" id="contenedor">
-      <div class="header">
-        <h1 class="titulo">My To Do List</h1>
+        <div class="div"></div>
       </div>
-      <button id="boton-agregar" class="boton-agregar">+ Add new task</button>
-      <ul class="lista-tareas">
-
-      </ul>
-      <button class="boton-limpiar" id="btn-limpiar">Clear all</button>
     </div>
-
-    <div class="APIContainer">
-      <button id="api-btn">Consultar cotizacion Dolar</button>
-    </div>
-
-    <div class="div"></div>
 
     <script src="./app.js"></script>
 
-   
-
+    <script
+      src="https://kit.fontawesome.com/d72c751f29.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
-
-
-
-  </html>
-  
+</html>
