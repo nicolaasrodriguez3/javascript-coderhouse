@@ -7,22 +7,107 @@ const botonLimpiar = document.getElementById('btn-limpiar')
 const listaTareas = document.querySelector('.lista-tareas')
 
 
-/* Eventos  */
+
+/* informacion para la Fecha */
+
+const dateNumber = document.getElementById('dateNumber');
+const dateText = document.getElementById ('dateText');
+const dateMonth = document.getElementById('dateMonth'); 
+const dateYear = document.getElementById('dateYear');
 
 
+const setDate = ()=>{
+    const date = new Date();
 
-/* Animaciones  */
+    dateNumber.textContent = date.toLocaleString('es',{day:'numeric'});
+    dateMonth.textContent = date.toLocaleString('es',{month:'short'});
+    dateYear.textContent = date.toLocaleString('es',{year:'numeric'});
+}
 
-$("document").ready(()=>{
-    $("#btn-start").click(()=>{
-        $("#contenedor").fadeOut(500, () => {
-            $("#display-saludo").text("Adios ! Vuelve Pronto");
-            $("#display-saludo").addClass("log-out");
-            $("#btn-start").hide(500);
-        });
+setDate();
+
+/* Cierra informacion para la FECHA*/
+
+/*Abre INFORMACION CLIMA  */
+
+const API_key = "f074bc18bf96b8685a4961ccfd021b10";
+
+const fetchData = (position)=>{
+
+    const {latitude, longitude}= position.coords;
+
+    fetch(`http://api.openweathermap.org/data/2.5/weather?units=metric&lat=${latitude}&lon=${longitude}&appid=${API_key}`)
+    .then( response => response.json())
+    .then(data => setWeatherData(data));
+    
+};
+
+const setWeatherData = (data)=>{
+
+    const weatherData = {
+        location: data.name,
+        description: data.weather[0].main,
+        humidity: data.main.humidity,
+        pressure: data.main.pressure,
+        temperature: data.main.temp,
+    };
+
+    Object.keys(weatherData).forEach( key =>{
+        document.getElementById(key).textContent = weatherData[key];
     });
+
+
+    cleanUp();
+}
+
+const cleanUp = ()=>{
+    let container = document.getElementById('clima');
+    let loader = document.getElementById('spinner');
+
+    loader.style.display='none';
+    container.style.display = 'flex';
+};
+
+const onLoad = ()=>{
+    navigator.geolocation.getCurrentPosition(fetchData);
+};
+
+
+
+/* Cierra INFORMACION CLIMA  */
+
+
+/* BOTONERA DEL MENU */
+
+$("#btn-start").on('click', ()=>{
+    $(".home-page").show();
+    $("#contenedor").hide();
+    $(".APIContainer").hide();
+
+});
+
+
+$("#btn-finanzas").click(()=>{$(".APIContainer").toggle() ;$(".canvas-container").hide() ; $("#contenedor").hide(); $("#clima").hide() }
+)
+
+$("#btn-to-do").click(()=>{$("#contenedor").toggle(); $(".canvas-container").hide(); $(".APIContainer").hide(); $("#clima").hide()})
+
+
+$("#btn-log-out").on('click',()=>{
+    $("#main").html(`<div class="pantallaSalida"> 
+
+    <button class="boton-reload"> Volver al inicio</button>
+
+    </div>`);
+
+    $(".boton-reload").on('click', ()=>{
+        window. location. reload();
+    })
+    
 })
 
+
+/* BOTONERA DEL MENU */
 
 
 
@@ -37,23 +122,9 @@ $("#boton-agregar").click(()=>{
     agregarTarea("");
 });
 
-$("#botonDone").click(()=>{
-    listaTareas.classList.toggle('input-done'); 
-})
-
-/* $(".lista-tareas").click((event)=>{
-
-    if (event.path[0].type == 'submit') {
-        eliminarTarea(event.path[1].id);
-    };
-
-        ESTE EVENTO ME TIRA ERROR SI LO HAGO CON JQUERY 
 
 
-
-}) */
-
- listaTareas.addEventListener('click', (event) => {
+listaTareas.addEventListener('click', (event) => {
     //funcion para eliminar la tarea seleccionada
 
     if (event.path[0].type == 'submit') {
@@ -62,26 +133,6 @@ $("#botonDone").click(()=>{
 
 })
  
-
-/* $(".lista-tareas").click((event)=>{
-    if (event.path[0].type == 'submit') {
-        eliminarTarea(event.path[1].id);
-    };
-});
-
-
-    ME TIRA ERROR SI LO HAGO COMO EVENTO DE JQUERY:
-
-    app.js:45 Uncaught TypeError: Cannot read properties of undefined (reading '0')
-    at HTMLUListElement.<anonymous> (app.js:45)
-    at HTMLUListElement.dispatch (libreria.min.js:1)
-    at HTMLUListElement.v.handle (libreria.min.js:1)
-    (anonymous) @ app.js:45
-   Dispatch @ libreria.min.js:1
-    v.handle @ libreria.min.js:1
-
- */
-
 
 
 listaTareas.addEventListener('keypress', (event) => {
@@ -165,14 +216,12 @@ const listarTareas = () =>{
            
            $(".lista-tareas").append(`
            <li class="lista" id= ${tarea.id}>
-               <input type="text" class="input-tarea"  value= "${tarea.descripcion}">
-               <button class="btn-done" id="botonDone">Done</button> 
+               <input type="text" class="input-tarea"  value= "${tarea.descripcion}"> 
                <button class="boton-eliminar">X</button> 
-              
-               
-           </li>
+           </li>` )
+          
            
-           ` )
+           
            
         };
     };
@@ -234,22 +283,16 @@ const limpiarTodo = ( )=>{
     contador = 0;
     setArregloDeTareas();
     setContador();
-}
+};
 
 
 
 
 
 
+const URLApi = 'https://www.dolarsi.com/api/api.php?type=valoresprincipales';
 
-const router = (route) =>{
-    
-    
-    switch(route){
-        case '#/':
-            return 
-        case '#/finanzas':
-            $.get( URLApi, (response, status)=>{
+$.get( URLApi, (response, status)=>{
 
                 let contador = 0;
             
@@ -258,7 +301,7 @@ const router = (route) =>{
                     $(".APIContainer").append(
                         `<div class="dollar-container">
                             <tr class="contador">${contador+1}</tr>
-                            ${response[contador].casa.nombre} <br>
+                            <span id="nombre-dolar">${response[contador].casa.nombre}</span> <br>
                             Compra :${response[contador].casa.compra} ARS <br>
                             Venta: ${response[contador].casa.venta} ARS
                            
@@ -272,52 +315,11 @@ const router = (route) =>{
             }
             );
             
-            return $('.mainContent').html( contenidoFinanzas())
-       
-        case'#/to-do-list':
-            
-                    
-            return $('.mainContent').html( contenidoToDoList())
-    }
-
-};
-
-window.addEventListener('hashchange', () =>{
-    router(window.location.hash)
-});
-
-
-
-const contenidoToDoList = ()=>{
-    const view = `<div class="container" id="contenedor">
-    <div class="header">
-      <h1 class="titulo">My To Do List</h1>
-    </div>
-    <button id="boton-agregar" class="boton-agregar">+ Add new task</button>
-    <ul class="lista-tareas">
-
-    </ul>
-    <button class="boton-limpiar" id="btn-limpiar">Clear all</button>
-  </div>`
-
-
-  return view
-};
-
-const contenidoFinanzas = ()=>{
-  const view = `<div class="APIContainer"><button id="api-btn">Consultar cotizacion Dolar</button></div>` ;
-  return view
-};
-
-const URLApi = 'https://www.dolarsi.com/api/api.php?type=valoresprincipales';
-
-
-
-
-
-
 
 //inicia 
+
+
+
 
 inicilizarContador();
 listarTareas();
