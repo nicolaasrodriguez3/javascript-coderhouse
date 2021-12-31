@@ -8,7 +8,7 @@ const listaTareas = document.querySelector('.lista-tareas')
 
 
 
-/* informacion para la Fecha */
+/* informacion para la Fecha DE LA LISTA DE TAREAS*/
 
 const dateNumber = document.getElementById('dateNumber');
 const dateText = document.getElementById ('dateText');
@@ -26,7 +26,7 @@ const setDate = ()=>{
 
 setDate();
 
-/* Cierra informacion para la FECHA*/
+/* Cierra informacion para la FECHA DE LA LISTA DE TAREAS*/
 
 /*Abre INFORMACION CLIMA  */
 
@@ -107,7 +107,7 @@ $("#btn-log-out").on('click',()=>{
 })
 
 
-/* BOTONERA DEL MENU */
+/* CIERRA BOTONERA DEL MENU */
 
 
 
@@ -117,6 +117,8 @@ $("#btn-limpiar").click(()=>{
    
 });
 
+
+/* BOTONERA DEL LA LISTA DE TAREAS */
 
 $("#boton-agregar").click(()=>{
     agregarTarea("");
@@ -152,7 +154,7 @@ let arregloTareas = [];
 let contador = 0;
 
 
-/* Funciones  */
+/* Funciones PARA LA TO- DO LIST  */
 
 const getContador = () => {
     const cont = localStorage.getItem("contador")
@@ -285,10 +287,10 @@ const limpiarTodo = ( )=>{
     setContador();
 };
 
+/* CIERRA Funciones PARA LA TO- DO LIST  */
 
 
-
-
+/* API para consulta valor del  DOLAR */
 
 const URLApi = 'https://www.dolarsi.com/api/api.php?type=valoresprincipales';
 
@@ -316,7 +318,7 @@ $.get( URLApi, (response, status)=>{
             );
             
 
-//inicia 
+/* API para consulta valor del  DOLAR */
 
 
 
